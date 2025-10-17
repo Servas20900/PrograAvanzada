@@ -185,6 +185,7 @@
     <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Registro.cshtml" />
+    <Content Include="Views\Home\Principal.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

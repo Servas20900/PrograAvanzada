@@ -12,5 +12,9 @@ namespace WebClases.Controllers
         {
             return View();
         }
+        public ActionResult Principal()
+        {
+            return View();
+        }
     }
 }
