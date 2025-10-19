@@ -1,4 +1,4 @@
-﻿
+﻿@model WebClases.Models.Usuario
 @{
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
@@ -61,29 +61,24 @@
                     </div>
                     <!-- /Logo -->
                     <h4 class="mb-2" style="text-align:center;">Register</h4>
-
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
-
+                    @using (Html.BeginForm("Registro", "Home"))
+                    {
                         <div class="mb-3">
                             <label for="ID" class="form-label">ID</label>
-                            <input type="text" class="form-control" id="ID" name="ID" placeholder="Enter your ID" />
+                            @Html.TextBoxFor(model => model.ID, new { @class = "form-control", placeholder = "Enter your ID" })
                         </div>
                         <div class="mb-3">
                             <label for="Name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter your name" />
+                            @Html.TextBoxFor(model => model.Name, new {@class = "form-control", placeholder = "Enter ur Name"})
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Enter your email" })
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Password</label>
                             <div class="input-group input-group-merge">
-                                <input type="password"
-                                       id="password"
-                                       class="form-control"
-                                       name="password"
-                                       aria-describedby="password" />
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Enter your password", aria_describedby = "password" })
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
                         </div>
@@ -98,8 +93,7 @@
                             </div>
                         </div>
                         <button class="btn btn-primary d-grid w-100">Sign up</button>
-                    </form>
-
+                        }
                     <p class="text-center">
                         <span>Already have an account?</span>
                         <a href="@Url.Action("Index","Home")">

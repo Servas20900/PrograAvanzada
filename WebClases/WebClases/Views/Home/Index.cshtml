@@ -67,7 +67,7 @@
                         {
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text"class="form-control"id="Email"name="Email"placeholder="Enter your email"autofocus />
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "Email", @placeholder = "Enter your email", @autofocus = "autofocus" })
 
                             </div>
                             <div class="mb-3 form-password-toggle">
@@ -79,7 +79,7 @@
                                 </div>
 
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="Password" class="form-control" name="Password" aria-describedby="password" />
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @id = "Password", @aria_describedby = "password" })
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>

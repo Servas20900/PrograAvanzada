@@ -65,18 +65,14 @@
                     <!-- /Logo -->
                     <h4 class="mb-2" style="text-align:center;">Recover Password</h4>
                     <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="email"
-                                   name="email"
-                                   placeholder="Enter your email"
-                                   autofocus />
-                        </div>
-                        <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
-                    </form>
+                        @using (Html.BeginForm("RecuperarAcceso", "Home"))
+                        {
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                @Html.TextBox(model => model.Email, new {@class = "form-control", placeholder = "Enter your email" })
+                            </div>
+                            <button class="btn btn-primary d-grid w-100" type="submit">Send Reset Link</button>
+                        }
                     <div class="text-center">
                         <a href="@Url.Action("Index","Home")" class="d-flex align-items-center justify-content-center">
                             <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
