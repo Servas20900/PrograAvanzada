@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using WebClases.EF;
 using WebClases.Models;
 
 //get devuelve solo la vista, los post reciben datos del formulario y los procesan, por lo que dentro del controldor lleva una logica.
@@ -31,6 +32,23 @@ namespace WebClases.Controllers
         [HttpPost]
         public ActionResult Registro(Usuario usuario)
         {
+            using (var context = new PorgraAvanzadaEntities())
+            {
+                //var nuevoUsuario = new T_Usuario
+                //{
+                //    ID = usuario.ID,
+                //    Name = usuario.Name,
+                //    Email = usuario.Email,
+                //    Password = usuario.Password,
+                //    Estado = true,
+                //    IdPerfil = 2
+                //};
+                //context.T_Usuario.Add(nuevoUsuario);
+                //context.SaveChanges();
+                
+
+                context.CrearUsuarios (usuario.ID, usuario.Name, usuario.Email, usuario.Password);
+            }
             return View();
         }
 
