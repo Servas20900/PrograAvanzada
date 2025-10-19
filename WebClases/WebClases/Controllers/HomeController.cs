@@ -17,7 +17,7 @@ namespace WebClases.Controllers
         [HttpPost]
         public ActionResult Index(Usuario usuario)
         {
-            return RedirectToAction("Principal","Home");
+            return RedirectToAction("Principal", "Home");
         }
         #endregion
 
@@ -45,9 +45,9 @@ namespace WebClases.Controllers
                 //};
                 //context.T_Usuario.Add(nuevoUsuario);
                 //context.SaveChanges();
-                
 
-                context.CrearUsuarios (usuario.ID, usuario.Name, usuario.Email, usuario.Password);
+
+                context.CrearUsuarios(usuario.ID, usuario.Name, usuario.Email, usuario.Password);
             }
             return View();
         }
@@ -57,7 +57,7 @@ namespace WebClases.Controllers
         #region RecuperarAcceso
         [HttpGet]
         public ActionResult RecuperarAcceso()
-        { 
+        {
             return View();
         }
 
