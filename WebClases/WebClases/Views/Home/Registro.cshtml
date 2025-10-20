@@ -61,15 +61,25 @@
                     </div>
                     <!-- /Logo -->
                     <h4 class="mb-2" style="text-align:center;">Register</h4>
+
+                    @if (ViewBag.Mensaje != null)
+                    {
+                        <div class="alert alert-danger text-center" role="alert">
+                            <span>State:</span>
+                            @ViewBag.Mensaje
+                        </div>
+                    }
+
+
                     @using (Html.BeginForm("Registro", "Home"))
                     {
                         <div class="mb-3">
                             <label for="ID" class="form-label">ID</label>
-                            @Html.TextBoxFor(model => model.ID, new { @class = "form-control", placeholder = "Enter your ID" })
+                            @Html.TextBoxFor(model => model.ID, new { @class = "form-control", placeholder = "Enter your ID", @onkeyup = "ConsultarNombre();" })
                         </div>
                         <div class="mb-3">
                             <label for="Name" class="form-label">Name</label>
-                            @Html.TextBoxFor(model => model.Name, new {@class = "form-control", placeholder = "Enter ur Name"})
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Enter ur Name", @readOnly = true })
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -82,18 +92,9 @@
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
                         </div>
-
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                                <label class="form-check-label" for="terms-conditions">
-                                    I agree to
-                                    <a href="javascript:void(0);">privacy policy & terms</a>
-                                </label>
-                            </div>
-                        </div>
                         <button class="btn btn-primary d-grid w-100">Sign up</button>
-                        }
+                    }
+
                     <p class="text-center">
                         <span>Already have an account?</span>
                         <a href="@Url.Action("Index","Home")">
@@ -106,3 +107,4 @@
         </div>
     </div>
 </div>
+<script src="~/assets/js/Registro.js"></script>

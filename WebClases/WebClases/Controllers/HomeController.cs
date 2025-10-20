@@ -47,9 +47,14 @@ namespace WebClases.Controllers
                 //context.SaveChanges();
 
 
-                context.CrearUsuarios(usuario.ID, usuario.Name, usuario.Email, usuario.Password);
+                var resultado = context.CrearUsuarios(usuario.ID, usuario.Name, usuario.Email, usuario.Password);
+                if (resultado > 0) { 
+                return RedirectToAction("Index", "Home");
+                }
+                ViewBag.Mensaje = "Error al registrar usuario(Ta mal)";
+                return View();
+
             }
-            return View();
         }
 
         #endregion
