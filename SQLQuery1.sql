@@ -1,0 +1,32 @@
+CREATE DATABASE PorgraAvanzada;
+GO
+
+USE PorgraAvanzada;
+GO
+
+
+
+
+
+CREATE TABLE T_Perfil (
+	IdPerfil INT IDENTITY(1,1) PRIMARY KEY,
+	Name VARCHAR (100)
+)
+GO
+CREATE TABLE T_Usuario (
+	IdUsuario INT IDENTITY(1,1) PRIMARY KEY,
+	ID VARCHAR(50), 
+	Name VARCHAR(50),
+	Email VARCHAR(50),
+	Password VARCHAR(50),
+	Estado BIT,
+    IdPerfil INT NOT NULL,
+    CONSTRAINT FK_Usuario_Perfil FOREIGN KEY (IdPerfil)
+        REFERENCES T_Perfil(IdPerfil)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+)
+GO
+
+ALTER TABLE T_Usuario ADD CONSTRAINT UK_ID UNIQUE (ID)  
+ALTER TABLE T_Usuario ADD CONSTRAINT UK_Email UNIQUE (Email)
