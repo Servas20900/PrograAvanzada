@@ -50,5 +50,18 @@ namespace WebClases.EF
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CrearUsuarios", iDParameter, nameParameter, emailParameter, passwordParameter);
         }
+    
+        public virtual ObjectResult<ValidarUsuarios_Result> ValidarUsuarios(string email, string password)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuarios_Result>("ValidarUsuarios", emailParameter, passwordParameter);
+        }
     }
 }

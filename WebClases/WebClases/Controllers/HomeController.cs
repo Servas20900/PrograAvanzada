@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿  using System.Linq;
+using System.Web.Helpers;
+using System.Web.Mvc;
+using System.Xml.Linq;
 using WebClases.EF;
 using WebClases.Models;
 
@@ -17,7 +20,20 @@ namespace WebClases.Controllers
         [HttpPost]
         public ActionResult Index(Usuario usuario)
         {
-            return RedirectToAction("Principal", "Home");
+            using (var context = new PorgraAvanzadaEntities())
+            {
+                //var resultado = context.T_Usuario.Where(u => u.Email == usuario.Email && u.Password == 
+                //                                        usuario.Password && u.Estado == true ).FirstOrDefault();
+                var resultado = context.ValidarUsuarios(usuario.Email, usuario.Password).FirstOrDefault();
+
+                if (resultado != null)
+                {
+                    return RedirectToAction("Principal", "Home");
+
+                }
+                ViewBag.Mensaje = "Usuario o contraseña incorrecta";
+                return View();
+            }
         }
         #endregion
 
@@ -47,7 +63,8 @@ namespace WebClases.Controllers
                 //context.SaveChanges();
 
 
-                var resultado = context.CrearUsuarios(usuario.ID, usuario.Name, usuario.Email, usuario.Password);
+                var resultado = context.CrearUsuarios(usuario.ID , usuario.Name, usuario.Email, usuario.Password);
+
                 if (resultado > 0) { 
                 return RedirectToAction("Index", "Home");
                 }

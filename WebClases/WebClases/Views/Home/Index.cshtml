@@ -63,26 +63,47 @@
                         <!-- /Logo -->
                         <h4 class="mb-2" style="text-align:center;">Sign-in</h4>
 
-                        @using (Html.BeginForm("Index", "Home"))
+                        @if (ViewBag.Mensaje != null)
+                        {
+                            <div class="alert alert-danger text-center" role="alert">
+                                <span>State:</span>
+                                @ViewBag.Mensaje
+                            </div>
+                        }
+
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @id = "FormInicioSesion"}))
                         {
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "Email", @placeholder = "Enter your email", @autofocus = "autofocus" })
-
+                                <label for="Email" class="form-label">Email</label>
+                                @Html.TextBoxFor(model => model.Email, new
+                                {
+                                    @class = "form-control",
+                                    @id = "Email",
+                                    @placeholder = "Enter your email",
+                                    @autofocus = "autofocus"
+                                })
                             </div>
+
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
-                                    <label class="form-label" for="password">Password</label>
+                                    <label class="form-label" for="Password">Password</label>
                                     <a href="@Url.Action("RecuperarAcceso", "Home")">
                                         <small>Forgot Password?</small>
                                     </a>
                                 </div>
 
                                 <div class="input-group input-group-merge">
-                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @id = "Password", @aria_describedby = "password" })
+                                    @Html.TextBoxFor(model => model.Password, new
+                                    {
+                                        @class = "form-control",
+                                        @type = "password",
+                                        @id = "Password",
+                                        @aria_describedby = "Password"
+                                    })
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>
+
                             <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                             </div>

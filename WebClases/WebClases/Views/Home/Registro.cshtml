@@ -71,11 +71,11 @@
                     }
 
 
-                    @using (Html.BeginForm("Registro", "Home"))
+                    @using (Html.BeginForm("Registro", "Home", FormMethod.Post, new {@id = "FormRegistro" }))
                     {
                         <div class="mb-3">
                             <label for="ID" class="form-label">ID</label>
-                            @Html.TextBoxFor(model => model.ID, new { @class = "form-control", placeholder = "Enter your ID", @onkeyup = "ConsultarNombre();" })
+                            @Html.TextBoxFor(model => model.ID, new { @class = "form-control", placeholder = "Enter your ID", @onkeyup = "ConsultarNombre();", @id="ID" })
                         </div>
                         <div class="mb-3">
                             <label for="Name" class="form-label">Name</label>
@@ -107,4 +107,3 @@
         </div>
     </div>
 </div>
-<script src="~/assets/js/Registro.js"></script>
